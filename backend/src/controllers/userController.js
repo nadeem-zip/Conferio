@@ -1,4 +1,4 @@
-import { User } from "../models/user.model";
+import { User } from "../models/user.model.js";
 import httpStatus from "http-status";
 import bcrypt from "bcrypt";
 import crypto from 'crypto';
@@ -46,3 +46,4 @@ const  register=async(req,res)=>{
         return res.status(httpStatus.INTERNAL_SERVER_ERROR).json({message:err});
     }
 };
+export {login,register};
