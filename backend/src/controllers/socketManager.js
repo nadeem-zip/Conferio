@@ -22,16 +22,16 @@ export const connectToSocket=(socket)=>{
             })
 
             socket.on("signal",(toId,message)=>{
-                io.to(toId).emit("signl",socket.id,message);
+                io.to(toId).emit("signal",socket.id,message);
             })
 
-            socket.on("chat-messge",(data,sender)=>{
+            socket.on("chat-message",(data,sender)=>{
                 const [matchingRoom,found]=Object.entries(connections)
                 .reduce(([matchingRoom, isFound],[roomKey,roomValue])=>{
                     if(!isFound &&roomValue.includes(socket.id)){
                         return [roomKey,true];
                     }
-                    return [room,isFound];
+                    return [roomKey,isFound];
 
                 },["",false]);
                 if(found==true){
@@ -39,8 +39,8 @@ export const connectToSocket=(socket)=>{
                          messages[matchingRoom] =[]
                         };
                         messages[matchingRoom].push({"sender":sender,"data":data,"socket-id-sender":socket.id});
-                        console.log("message",KeyboardEvent,":",sender,data);
-                        connections[matchingRoom].array.forEach(element => {
+                        console.log("message","key",":",sender,data);
+                        connections[matchingRoom].forEach(element => {
                                 io.to(element).emit("chat-message",data,sender,socket.id);
                         });
                 }
