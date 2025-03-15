@@ -1,0 +1,102 @@
+.landingPageContainer{
+  height:100vh;
+  width: 100vw;
+  /* background-image: url('../public//images/background.jpeg'); */
+  background-color: #eef0f2;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.landingPageContainer nav{
+  /* border-bottom: 2px solid black */
+  position:sticky;
+  background-color: #eef0f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width:100vw;
+}
+.landingPageContainer nav .navHeader img{
+  height: 4.5rem;
+  width:15rem;
+  color:white;
+}
+
+.landingPageContainer nav .navList{
+  display: flex;  
+  justify-content: space-evenly;
+  align-items: center;
+  width: 30%;
+}
+.landingPageContainer nav .navList .guest{
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+  font-size: 1.2rem;
+}
+
+.landingPageContainer nav .navList .register{
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
+  font-size: 1.2rem;
+}
+.landingPageContainer nav .navList .login{
+  text-decoration: none;
+  cursor: pointer;
+  color: white;
+   background-color: #0b4fe0;
+   
+  padding-inline: 1.7rem;
+  padding-block: 0.7rem;
+  border-radius: 30px;
+  font-size: 1.2rem;
+}
+
+.landingMainContainer{
+ 
+  display: flex;
+  justify-content: space-between;
+  padding-inline:15rem ;
+  padding-top:15rem;
+  height:70vh;
+  align-items: center;
+}
+.landingMainContainer .content h1{
+  font-size: 3rem;
+  font-weight: 700;
+  color: #252d3c;
+  margin-bottom: 0.2rem;
+}
+.landingMainContainer .content p{
+  font-size: 2rem;
+  font-weight: 700;
+  font-style: italic;
+  color:#252d3c;
+}
+.landingMainContainer .content .getStarted {
+  width:fit-content;
+  background-color: #0161c2;   
+  color: white;
+  font-size: 0.2rem;
+  padding: 1rem;
+  border-radius: 18px;
+  margin-top:1.4rem;
+}
+.landingMainContainer .content .getStarted .linkGetStarted {
+  text-decoration: none;
+  font-size: 1rem;
+}
+.landingMainContainer .content .getStarted .linkGetStarted p{
+  color: white;
+  font-size: 1rem;
+  
+  color:rgba(3, 3, 3, 0.578)
+}
+.landingMainContainer .image{
+  height:60vh;
+  width: auto;
+  border-radius: 20px;
+  /* background-color:#67d4f9; */
+  box-shadow: 0px 10px 70px rgba(0, 0, 0, 0.1);
+  border-radius: 3rem;
+}

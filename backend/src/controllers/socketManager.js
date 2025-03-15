@@ -3,7 +3,14 @@ let connections={};
 let messages={};
 let timeOnline={};
 export const connectToSocket=(socket)=>{
-    const io= new Server(socket);
+    const io= new Server(socket,{
+        cors:{
+            origin:"*",
+            methods:["GET","POST"],
+            allowedHeaders:["*"],
+            credentials:true
+        }
+    });
     io.on("connection",(socket)=>{
         socket.on("join-call",(path)=>{
             if(connections[path]==undefined){
