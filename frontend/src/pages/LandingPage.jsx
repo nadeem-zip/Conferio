@@ -6,7 +6,7 @@ let LandingPage = () => {
     <div className='landingPageContainer'>
       <nav>
         <div className="navHeader">
-          <img src='../public/images/Logo.png' alt="Logo" />
+          <img src='/Logo.png' alt="Logo" />
         </div>
         <div className="navList">
           <div role='button' className="guest">
@@ -36,7 +36,7 @@ let LandingPage = () => {
           </div>
         </div>
         <div className="image">
-          <img src="./images/hero.png" alt="hero image" />
+          <img src="./hero.png" alt="hero image" />
         </div>
       </div>
     </div>

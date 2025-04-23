@@ -26,7 +26,7 @@ function HomeComponent() {
             <div className="homePageContainer">
             <nav>
         <div className="navHeader">
-          <img src='../public/images/Logo.png' alt="Logo" />
+          <img src='/Logo.png' alt="Logo" />
         </div>
         <div className="navList">
         <div style={{ display: "flex", alignItems: "center" }}>
