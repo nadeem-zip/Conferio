@@ -12,6 +12,8 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { AuthContext } from '../context/AuthContext';
+import { Snackbar } from '@mui/material';
 
 function Copyright(props) {
   return (
@@ -38,14 +40,36 @@ export default function AuthenticationPage() {
     let [message,setMessage]=React.useState('')
     let [formState,setFormState]=React.useState('login')
     let [open ,setOpen]=React.useState(false)
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
-  };
+    const {handleRegister,handleLogin}=React.useContext(AuthContext);
+    let handleAuth= async()=>{
+    try{
+        if(formState=='login'){
+            const result=await handleLogin(username,password);
+            setMessage(result);
+            if(error){
+              setError("");
+            }
+        }
+        if(formState=='signup'){
+            const result=await handleRegister(name,username,password)
+            setMessage(result);
+            setOpen(true);
+            setFormState('login');
+            setPassword('');
+            if(error){
+              setError("");
+            }
+        }
+    }
+    catch(error){
+      let message=error.response.data.message;
+      setError(message);
+        
+    }
+  }
+  let handleOnclose=()=>{
+    setOpen(false);
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -82,7 +106,7 @@ export default function AuthenticationPage() {
                 <Button variant={formState=='login'?'contained':""} onClick={()=>{setFormState('login')}}> Login</Button>
                 <Button variant={formState=='signup'?'contained':""} onClick={()=>{setFormState('signup')}}>Sign Up</Button>
             </div>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate  sx={{ mt: 1 }}>
                 {formState=='signup'&&
             <TextField
                 margin="normal"
@@ -117,13 +141,16 @@ export default function AuthenticationPage() {
                 autoComplete="current-password"
                 onChange={(e)=>{setPassword(e.target.value)}}
               />
+              <p style={{color:"red"}}>{error}</p>
               <Button
-                type="submit"
+                type="button"
                 fullWidth
                 variant="contained"
                 sx={{ mt: 3, mb: 2 }}
+                onClick={handleAuth}
               >
-                Sign In
+                {formState=='login'?'Login':'Register'}
+            
               </Button>
               <Grid container>
                 <Grid item>
@@ -136,6 +163,11 @@ export default function AuthenticationPage() {
           </Box>
         </Grid>
       </Grid>
+      <Snackbar open={open} autoHideDuration={
+        4000} message={message}
+        onClose={handleOnclose} 
+        />
+      
     </ThemeProvider>
   );
 }

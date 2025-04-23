@@ -1,0 +1,23 @@
+.landingPageContainer{
+    height:100vh;
+    width: 100vw;
+    /* background-image: url('../public//images/background.jpeg'); */
+    background-color: #eef0f2;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+.homePageContainer nav{
+    /* border-bottom: 2px solid black */
+    position:sticky;
+    background-color: #eef0f2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width:100vw;
+  }
+
+  .homePageContainer nav .navHeader img{
+    height: 4.5rem;
+    width:15rem;
+    color:white;
+  }

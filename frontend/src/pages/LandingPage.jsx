@@ -1,6 +1,7 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 let LandingPage = () => {
+  const router = useNavigate();
   return (
     <div className='landingPageContainer'>
       <nav>
@@ -9,12 +10,19 @@ let LandingPage = () => {
         </div>
         <div className="navList">
           <div role='button' className="guest">
-            <p>Join as guest</p>
+            <p onClick={() => {
+                        router("/aljk2344")
+                    }}>Join as guest</p>
           </div>
-          <div role='button' className="register">
+          <div  onClick={() => {
+                        router("/auth")
+
+                    }} role='button' className="register">
             <p>Register</p>
           </div>
-          <div role='button' className="login">
+          <div onClick ={()=>{
+            router("/auth")
+          }} role='button' className="login">
             <p>Login</p>
           </div>
         </div>
@@ -28,7 +36,7 @@ let LandingPage = () => {
           </div>
         </div>
         <div className="image">
-          <img src="./public/images/hero.png" alt="hero image" />
+          <img src="./images/hero.png" alt="hero image" />
         </div>
       </div>
     </div>
